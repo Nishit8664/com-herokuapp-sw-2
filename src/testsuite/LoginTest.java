@@ -68,6 +68,7 @@ public class LoginTest extends BaseTest {
         Assert.assertEquals("User is not logged in with invalid credentials", expectedText, actualText);    //Comparing 2 strings}
     }
 
+    @After
     public void tearDown() {                    //Browser closing code
         closeBrowser();
     }
