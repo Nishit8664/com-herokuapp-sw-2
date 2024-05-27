@@ -52,9 +52,8 @@ public class LoginTest extends BaseTest {
         driver.findElement(By.id("username")).sendKeys("tomsmith1");                                    //Enter invalid username
         driver.findElement(By.id("password")).sendKeys("SuperSecretPassword!");                        //Enter password
         driver.findElement(By.xpath("//button[@class='radius']")).click();                           //Click on login button
-        String expectedText = "Your username is invalid!\n" +
-                "×";
-        String actualText = driver.findElement(By.id("flash")).getText();                                                                      //Getting text to verify
+        String expectedText = "Your username is invalid!";
+        String actualText = driver.findElement(By.id("flash")).getText().substring(0,25);                                                                      //Getting text to verify
         Assert.assertEquals("User is not logged in with invalid credentials", expectedText, actualText);    //Comparing 2 strings
     }
 
@@ -63,10 +62,9 @@ public class LoginTest extends BaseTest {
         driver.findElement(By.id("username")).sendKeys("tomsmith");                                    //Enter username
         driver.findElement(By.id("password")).sendKeys("SuperSecretPassword");                         //Enter invalid password
         driver.findElement(By.xpath("//button[@class='radius']")).click();                           //Click on login button
-        String expectedText = "Your password is invalid!\n" +
-                "×";
+        String expectedText = "Your password is invalid!";
         //Getting text to verify
-        String actualText = driver.findElement(By.xpath("//div[@id='flash' and contains(text(), 'Your password is invalid!')]")).getText();
+        String actualText = driver.findElement(By.xpath("//div[@id='flash' and contains(text(), 'Your password is invalid!')]")).getText().substring(0,25);
         Assert.assertEquals("User is not logged in with invalid credentials", expectedText, actualText);    //Comparing 2 strings}
     }
 
